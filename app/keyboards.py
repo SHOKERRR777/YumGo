@@ -2,11 +2,10 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMar
 
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
-main = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='меню', callback_data='webapppril')],
-    [InlineKeyboardButton(text='Проверить корзину', callback_data='check_cart')],
-    [InlineKeyboardButton(text='помощь оператора', callback_data='help_operator')]
-], 
+main = ReplyKeyboardMarkup(keyboard=[
+    [KeyboardButton(text="Меню")],
+    [KeyboardButton(text="Проверить корзину")], [KeyboardButton(text="Помощь оператора")]
+],                       
                         resize_keyboard=True)
 
 webapp_pril = InlineKeyboardMarkup(inline_keyboard=[
