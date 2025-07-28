@@ -2,6 +2,8 @@ from aiogram import F, Router
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, CallbackQuery
 
+import app.database.request as rq
+
 import app.keyboards as kb
 
 router = Router()
@@ -9,6 +11,7 @@ router = Router()
 """ Обработчик команды /start """
 @router.message(CommandStart())
 async def cmd_start(message: Message):
+    await rq.set_user(message.from_user.id)
     await message.answer_photo(photo='https://nbkk.co.jp/wp-content/uploads/2023/06/yumgo-logo.png')
     await message.answer(f"""
 🍔 Добро пожаловать, {message.from_user.first_name}, в YumGo! 🚀
