@@ -1,24 +1,31 @@
-from flask import Flask, render_template, request
+import uvicorn 
 
-from app.database.models import async_session
+from contextlib import asynccontextmanager
 
-app = Flask(__name__)
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
-@app.router('/')
-def menu_food():
-    user_id = request.args.get('tg_id')
+from app.database.models import Item, async_session
 
-    if not user_id:
-        return "Доступ запрещен!", 403
-    try:
-        async def db_init():
-            await async_session() # Включаем базу данных в этот файл
+from pathlib import Path
 
-        return render_template('menu_food.html')
 
-    except TypeError as e:
-        print(f"Ошибка с типами данных: {e}")
+templates = Jinja2Templates(directory="templates")
 
-# Запуск файла
+app = FastAPI(title="To Do App")
+
+# Данная конструкция
+@asynccontextmanager
+async def lifesppan(app: FastAPI):
+    await async_session
+    print("Bot is ready")
+    yield
+
+@app.route("/", response_class=HTMLResponse)
+def food_menu(request: Request):
+    return templates.TemplateResponse("menu_food.html", food_list=Item)
+
+# Запуск программы 
 if __name__ == "__main__":
-    app.run(debug=True)
+    uvicorn.run("main:app", reload=True) #reload=True для того, чтобы автоматически обновлялось при изменениях
