@@ -1,4 +1,5 @@
 import uvicorn 
+from pathlib import Path
 
 from contextlib import asynccontextmanager
 
@@ -7,8 +8,6 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app.database.models import Item, async_session
-
-from pathlib import Path
 
 
 templates = Jinja2Templates(directory="templates")
