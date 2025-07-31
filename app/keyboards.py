@@ -11,6 +11,6 @@ main = ReplyKeyboardMarkup(keyboard=[
 webapp_pril = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(
         text='Чтобы сделать заказ, нажми на эту кнопку 🥰',
-        web_app=WebAppInfo(url='https://taxi-report.onrender.com/')
+        web_app=WebAppInfo(url='https://yumgo.onrender.com/')
     )]
 ])
