@@ -125,86 +125,11 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>🍔 Food Menu</h1>
-        <div class="menu">
-            <div class="item">
-                <img src="https://img.icons8.com/color/96/hamburger.png" alt="Burger">
-                <div class="item-name">Burger</div>
-                <div class="item-price">$4.99</div>
-                <button class="add-btn" onclick="addToCart('Burger', 4.99)">ADD</button>
-            </div>
-            <div class="item">
-                <img src="https://img.icons8.com/color/96/fries.png" alt="Fries">
-                <div class="item-name">Fries</div>
-                <div class="item-price">$1.49</div>
-                <button class="add-btn" onclick="addToCart('Fries', 1.49)">ADD</button>
-            </div>
-            <div class="item">
-                <img src="https://img.icons8.com/color/96/hotdog.png" alt="Hotdog">
-                <div class="item-name">Hotdog</div>
-                <div class="item-price">$3.49</div>
-                <button class="add-btn" onclick="addToCart('Hotdog', 3.49)">ADD</button>
-            </div>
-            <div class="item">
-                <img src="https://img.icons8.com/color/96/taco.png" alt="Taco">
-
-<div class="item-name">Taco</div>
-                <div class="item-price">$3.99</div>
-                <button class="add-btn" onclick="addToCart('Taco', 3.99)">ADD</button>
-            </div>
-            <div class="item">
-                <img src="https://img.icons8.com/color/96/pizza.png" alt="Pizza">
-                <div class="item-name">Pizza</div>
-                <div class="item-price">$7.99</div>
-                <button class="add-btn" onclick="addToCart('Pizza', 7.99)">ADD</button>
-            </div>
-            <div class="item">
-                <img src="https://img.icons8.com/color/96/doughnut.png" alt="Donut">
-                <div class="item-name">Donut</div>
-                <div class="item-price">$1.49</div>
-                <button class="add-btn" onclick="addToCart('Donut', 1.49)">ADD</button>
-            </div>
-        </div>
-
-        <div class="cart">
-            <h2>🛒 Cart</h2>
-            <ul class="cart-items" id="cart-items"></ul>
-            <button class="checkout-btn" id="checkout-btn" disabled onclick="checkout()">Pay Order</button>
-        </div>
+    <div id="main">
+        <h1>Меню YumGo</h1>
+        <img src="https://image.vsem-edu-oblako.ru/upload/store/merchant5147/menshe.png">
+        <button id="buy">В корзину</button>
+        <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
     </div>
-
-    <script>
-        let cart = [];
-
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCart();
-        }
-
-        function updateCart() {
-            const cartList = document.getElementById('cart-items');
-            cartList.innerHTML = '';
-            cart.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = $;{item.name} - $$;{item.price.toFixed(2)};
-                cartList.appendChild(li);
-            });
-            document.getElementById('checkout-btn').disabled = cart.length === 0;
-        }
-
-        function checkout() {
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            alert('Thank you! Your order total is $${total.toFixed(2)}');
-            cart = [];
-            updateCart();
-
-            // Отправка данных в Telegram WebApp
-            if (window.Telegram && Telegram.WebApp) {
-                Telegram.WebApp.sendData(JSON.stringify({order: cart, total: total}));
-            }
-        }
-    </script>
-    <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
 </body>
 </html>
